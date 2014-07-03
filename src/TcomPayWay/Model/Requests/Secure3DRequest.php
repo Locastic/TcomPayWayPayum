@@ -1,6 +1,6 @@
 <?php
 
-namespace Locastic\TcomPayWay\Entity\Reponses;
+namespace Locastic\TcomPayWay\Model\Reponses;
 
 class Secure3DResponse
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Locastic\TcomPayWay\Entity;
+namespace Locastic\TcomPayWay\Model;
 
 class Customer
 {
@@ -14,7 +14,7 @@ class Customer
     private $_email;
 
     /**
-     * @var \Locastic\Bundle\TcomPayWayBundle\Entity\CustomersClient
+     * @var \Locastic\TcomPayWay\Model\CustomersClient
      */
     private $_client;
 
@@ -72,7 +72,7 @@ class Customer
     }
 
     /**
-     * @return \Locastic\Bundle\TcomPayWayBundle\Entity\CustomersClient
+     * @return \Locastic\TcomPayWay\Model\CustomersClient
      */
     public function getClient()
     {
