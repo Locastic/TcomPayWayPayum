@@ -2,7 +2,7 @@
     "name": "locastic/tcompayway-payum",
     "type": "library",
     "description": "TcomPayway integration with Payum",
-    "keyword": [, "tcompayway", "tcom", "payway", "payum", "symfony", "payment"],
+    "keyword": ["tcompayway", "tcom", "payway", "payum", "symfony", "payment"],
     "homepage": "https://github.com/locastic/TcomPayWayPayum",
     "license": "MIT",
     "require": {
