@@ -1,20 +1,18 @@
 <?php
 
-namespace Locastic\Bundle\TcomPayWayBundle\Entity;
+namespace Locastic\TcomPayWay\Entity;
 
 class Card
 {
     private $id;
     private $number;
     private $expDate;
-    private $cvd;
 
-    function __construct($id, $number, $expDate, $cvd = null)
+    function __construct($id, $number, $expDate)
     {
         $this->id = $id;
         $this->number = $number;
         $this->expDate = $expDate;
-        $this->cvd = $cvd;
     }
 
     public function getExpDate()
@@ -30,16 +28,6 @@ class Card
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setCvd($cvd)
-    {
-        $this->cvd = $cvd;
-    }
-
-    public function getCvd()
-    {
-        return $this->cvd;
     }
 
 }

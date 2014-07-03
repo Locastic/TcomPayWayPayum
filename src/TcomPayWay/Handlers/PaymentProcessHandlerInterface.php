@@ -1,8 +1,9 @@
 <?php
 
-namespace Locastic\Bundle\TcomPayWayBundle\Model;
+namespace Locastic\TcomPayWay\Handler;
 
-interface TcomPayWayClientInterface
+
+interface PaymentProcessHandlerInterface
 {
     public function SendSecure3DRequestExtn();
 
@@ -11,4 +12,6 @@ interface TcomPayWayClientInterface
     public function ProcessReversalEx();
 
     public function ProcessSettlementEx();
+
+    public function GetValidInstallments();
 }

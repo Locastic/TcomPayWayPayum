@@ -1,6 +1,6 @@
 <?php
 
-namespace Locastic\Bundle\TcomPayWayBundle\Entity;
+namespace Locastic\TcomPayWay\Entity;
 
 class Card
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Locastic\Bundle\TcomPayWayBundle\Entity\Reponses;
+namespace Locastic\TcomPayWay\Entity\Reponses;
 
 class TransactionResponse
 {
