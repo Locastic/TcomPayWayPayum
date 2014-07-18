@@ -1,11 +1,22 @@
 <?php
+
+/*
+ * This file is part of the LocasticTcomPayWayPayum package.
+ *
+ * (c) locastic <https://github.com/locastic/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Locastic\TcomPayWayPayum\Action;
 
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Request\StatusRequestInterface;
-use Payum\Core\Exception\RequestNotSupportedException;
-use Payum\Core\Bridge\Spl\ArrayObject;
 
+/**
+ * @author SNjegovan <sandro@locastic.com>
+ */
 class StatusAction implements ActionInterface
 {
     /**
@@ -13,31 +24,28 @@ class StatusAction implements ActionInterface
      */
     public function execute($request)
     {
-        /** @var $request StatusRequestInterface */
-        if (false == $this->supports($request)) {
-            throw RequestNotSupportedException::createActionNotSupported($this, $request);
-        }
+        $model = $request->getModel();
 
-        $rawModel = (array)ArrayObject::ensureArrayObject($request->getModel());
-
-        if (false == isset($rawModel['transaction']['processing']['result'])) {
-            if (isset($rawModel['transaction']['token'])) {
-                $request->markPending();
-            } else {
-                $request->markNew();
-            }
+        if (false == isset($model['paymentStatus'])) {
+            $request->markNew();
 
             return;
         }
 
-        if ($rawModel['transaction']['processing']['result'] == 'ACK') {
+        if ('success' == $model['paymentStatus']) {
             $request->markSuccess();
 
             return;
         }
 
-        if ($rawModel['transaction']['processing']['result'] != 'WAITING FOR SHOPPER') {
+        if ('secure3d' == $model['paymentStatus']) {
             $request->markPending();
+
+            return;
+        }
+
+        if ('error' == $model['paymentStatus']) {
+            $request->markFailed();
 
             return;
         }

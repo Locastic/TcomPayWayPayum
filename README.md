@@ -1,4 +1,6 @@
 TcomPayWayPayum
 ===============
 
-Integration TcomPayWay and PAyum
+TcomPayway integration with Payum
+
+BETA version; still in development & testing phase

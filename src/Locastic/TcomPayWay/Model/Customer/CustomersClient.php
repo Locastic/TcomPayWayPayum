@@ -1,18 +1,30 @@
 <?php
 
-namespace Locastic\TcomPayWay\Model;
+/*
+ * This file is part of the LocasticTcomPayWayPayum package.
+ *
+ * (c) locastic <https://github.com/locastic/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+namespace Locastic\TcomPayWay\Model\Customer;
+
+/**
+ * @author SNjegovan <sandro@locastic.com>
+ */
 class CustomersClient
 {
     private $_httpAccept;
     private $_httpUserAgent;
     private $_originIP;
 
-    function __construct($_httpAccept, $_httpUserAgent, $_originIP)
+    function __construct($httpAccept, $httpUserAgent, $originIP)
     {
-        $this->_httpAccept = $_httpAccept;
-        $this->_httpUserAgent = $_httpUserAgent;
-        $this->_originIP = $_originIP;
+        $this->_httpAccept = $httpAccept;
+        $this->_httpUserAgent = $httpUserAgent;
+        $this->_originIP = $originIP;
     }
 
     public function getHttpAccept()

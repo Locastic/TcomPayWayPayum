@@ -11,27 +11,24 @@
 
 namespace Locastic\TcomPayWay\Model\Requests;
 
-use Locastic\TcomPayWay\Model\Card;
-use Locastic\TcomPayWay\Model\Customer\CustomersClient;
-use Locastic\TcomPayWay\Model\Payment;
-use Locastic\TcomPayWay\Model\Shop;
+use Locastic\TcomPayWay\Model\Transaction;
 
 /**
  * @author SNjegovan <sandro@locastic.com>
  */
-class Secure3DRequest
+class ProcessAuthorizationRequest
 {
     private $_shop;
     private $_card;
     private $_payment;
     private $_customersClient;
 
-    function __construct(Shop $_shop, Payment $_payment, Card $_card, CustomersClient $customersClient)
+    function __construct(Transaction $transaction)
     {
-        $this->_shop = $_shop;
-        $this->_payment = $_payment;
-        $this->_card = $_card;
-        $this->_customersClient = $customersClient;
+        $this->_shop = $transaction->getShop();
+        $this->_payment = $transaction->getPayment();
+        $this->_card = $transaction->getCard();
+        $this->_customersClient = $transaction->getCustomer()->getClient();
     }
 
     public function getCard()

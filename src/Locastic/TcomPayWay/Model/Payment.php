@@ -1,33 +1,52 @@
 <?php
 
+/*
+ * This file is part of the LocasticTcomPayWayPayum package.
+ *
+ * (c) locastic <https://github.com/locastic/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Locastic\TcomPayWay\Model;
 
-class Card
+/**
+ * @author SNjegovan <sandro@locastic.com>
+ */
+class Payment
 {
-    private $id;
-    private $number;
-    private $expDate;
+    private $_amount;
+    private $_mode;
+    private $_numOfInstallments;
+    private $_shoppingCartId;
 
-    function __construct($id, $number, $expDate)
+    function __construct($shoppingCartId, $amount, $numOfInstallments, $mode)
     {
-        $this->id = $id;
-        $this->number = $number;
-        $this->expDate = $expDate;
+        $this->_shoppingCartId = $shoppingCartId;
+        $this->_amount = $amount;
+        $this->_mode = $mode;
+        $this->_numOfInstallments = $numOfInstallments;
     }
 
-    public function getExpDate()
+    public function getAmount()
     {
-        return $this->expDate;
+        return $this->_amount;
     }
 
-    public function getNumber()
+    public function getNumOfInstallments()
     {
-        return $this->number;
+        return $this->_numOfInstallments;
     }
 
-    public function getId()
+    public function getMode()
     {
-        return $this->id;
+        return $this->_mode;
+    }
+
+    public function getShoppingCartId()
+    {
+        return $this->_shoppingCartId;
     }
 
 }

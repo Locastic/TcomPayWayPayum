@@ -1,90 +1,53 @@
 <?php
 
+/*
+ * This file is part of the LocasticTcomPayWayPayum package.
+ *
+ * (c) locastic <https://github.com/locastic/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Locastic\TcomPayWay\Model;
 
+/**
+ * @author SNjegovan <sandro@locastic.com>
+ */
 class Shop
 {
-    /**
-     * @var string
-     */
-    private $id;
+    private $_id;
+    private $_username;
+    private $_password;
+    private $_secretKey;
 
-    /**
-     * @var string
-     */
-    private $username;
+//    function __construct($id, $username, $password, $secretKey)
+    function __construct()
+    {
+        $this->_id = 10000006;
+        $this->_username = "test3d";
+        $this->_password = "test3d";
+        $this->_secretKey = "test3d";
+    }
 
-    /**
-     * @var string
-     */
-    private $password;
-
-    /**
-     * @var string
-     */
-    private $secretKey;
-
-    /**
-     * @return string
-     */
     public function getId()
     {
-        return $this->id;
+        return $this->_id;
     }
 
-    /**
-     * @param string $id
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * @param string $password
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
-
-    /**
-     * @return string
-     */
-    public function getSecretKey()
-    {
-        return $this->secretKey;
-    }
-
-    /**
-     * @param string $secretKey
-     */
-    public function setSecretKey($secretKey)
-    {
-        $this->secretKey = $secretKey;
-    }
-
-    /**
-     * @return string
-     */
     public function getUsername()
     {
-        return $this->username;
+        return $this->_username;
     }
 
-    /**
-     * @param string $username
-     */
-    public function setUsername($username)
+    public function getPassword()
     {
-        $this->username = $username;
+        return $this->_password;
     }
+
+    public function getSecretKey()
+    {
+        return $this->_secretKey;
+    }
+
 }

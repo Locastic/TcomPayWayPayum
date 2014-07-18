@@ -1,45 +1,115 @@
 <?php
 
+/*
+ * This file is part of the LocasticTcomPayWayPayum package.
+ *
+ * (c) locastic <https://github.com/locastic/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Locastic\TcomPayWay\Model;
 
-class Card
+use Locastic\TcomPayWay\Helpers\TransactionsHelper;
+use Locastic\TcomPayWay\Model\Customer\Customer;
+
+/**
+ * @author SNjegovan <sandro@locastic.com>
+ */
+class Transaction
 {
-    private $id;
-    private $number;
-    private $expDate;
-    private $cvd;
+    /**
+     * @var \Locastic\TcomPayWay\Model\Shop
+     */
+    private $_shop;
 
-    function __construct($id, $number, $expDate, $cvd = null)
+    /**
+     * @var \Locastic\TcomPayWay\Model\Customer\Customer
+     */
+    private $_customer;
+
+    /**
+     * @var \Locastic\TcomPayWay\Model\Payment
+     */
+    private $_payment;
+
+    /**
+     * @var \Locastic\TcomPayWay\Model\Card
+     */
+    private $_card;
+
+    private $_signature;
+
+    private $_secure3dpares;
+
+    private $_transactionId;
+
+    function __construct(Shop $shop, Customer $customer, Card $card, Payment $payment)
     {
-        $this->id = $id;
-        $this->number = $number;
-        $this->expDate = $expDate;
-        $this->cvd = $cvd;
+        $this->_customer = $customer;
+        $this->_payment = $payment;
+        $this->_shop = $shop;
+        $this->_card = $card;
+        $this->_secure3dpares;
+        $this->_signature = TransactionsHelper::signTransaction($this);
     }
 
-    public function getExpDate()
+    /**
+     * @return \Locastic\TcomPayWay\Model\Customer\Customer
+     */
+    public function getCustomer()
     {
-        return $this->expDate;
+        return $this->_customer;
     }
 
-    public function getNumber()
+    /**
+     * @return \Locastic\TcomPayWay\Model\Payment
+     */
+    public function getPayment()
     {
-        return $this->number;
+        return $this->_payment;
+    }
+
+    /**
+     * @return \Locastic\TcomPayWay\Model\Shop
+     */
+    public function getShop()
+    {
+        return $this->_shop;
+    }
+
+    /**
+     * @return \Locastic\TcomPayWay\Model\Card
+     */
+    public function getCard()
+    {
+        return $this->_card;
+    }
+
+    public function getSignature()
+    {
+        return $this->_signature;
+    }
+
+    public function setId($id)
+    {
+        $this->_transactionId = $id;
     }
 
     public function getId()
     {
-        return $this->id;
+        return $this->_transactionId;
     }
 
-    public function setCvd($cvd)
+    public function setSecure3dpares($secure3dpares)
     {
-        $this->cvd = $cvd;
+        $this->_secure3dpares = $secure3dpares;
     }
 
-    public function getCvd()
+    public function getSecure3dpares()
     {
-        return $this->cvd;
+        return ($this->_secure3dpares == NULL) ? '' : $this->_secure3dpares;
     }
 
 }

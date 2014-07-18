@@ -1,7 +1,21 @@
 <?php
 
-namespace Locastic\TcomPayWay\Model;
+/*
+ * This file is part of the LocasticTcomPayWayPayum package.
+ *
+ * (c) locastic <https://github.com/locastic/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
+namespace Locastic\TcomPayWay\Model\Customer;
+
+use Locastic\TcomPayWay\Helpers\TransactionsHelper;
+
+/**
+ * @author SNjegovan <sandro@locastic.com>
+ */
 class Customer
 {
     private $_firstName;
@@ -14,20 +28,20 @@ class Customer
     private $_email;
 
     /**
-     * @var \Locastic\TcomPayWay\Model\CustomersClient
+     * @var \Locastic\TcomPayWay\Model\Customer\CustomersClient
      */
     private $_client;
 
     function __construct($firstName, $lastName, $street, $city, $postalCode, $country, $email, $phoneNumber, $client)
     {
-        $this->_city = $city;
+        $this->_city = TransactionsHelper::clearUTF($city);
         $this->_country = $country;
         $this->_email = $email;
-        $this->_firstName = $firstName;
-        $this->_lastName = $lastName;
+        $this->_firstName = TransactionsHelper::clearUTF($firstName);
+        $this->_lastName = TransactionsHelper::clearUTF($lastName);
         $this->_phoneNumber = $phoneNumber;
         $this->_postalCode = $postalCode;
-        $this->_street = $street;
+        $this->_street = TransactionsHelper::clearUTF($street);
         $this->_client = $client;
     }
 
@@ -72,7 +86,7 @@ class Customer
     }
 
     /**
-     * @return \Locastic\TcomPayWay\Model\CustomersClient
+     * @return \Locastic\TcomPayWay\Model\Customer\CustomersClient
      */
     public function getClient()
     {
