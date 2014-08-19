@@ -19,12 +19,17 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Antonio Perić",
-            "email": "antonio@locastic.com"
+            "name": "locastic",
+            "homepage": "http://locastic.com",
+            "email": "info@locastic.com"
         },
         {
             "name": "Sandro Njegovan",
             "email": "sandro@locastic.com"
+        },
+        {
+            "name": "Antonio Perić",
+            "email": "antonio@locastic.com"
         }
     ],
     "require": {
