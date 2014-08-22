@@ -45,8 +45,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Locastic\\TcomPayWayPayum": "src/",
-            "TcomPayWay": "src/"
+            "Locastic\\TcomPayWayPayum": "src/"
         }
     }
 }
