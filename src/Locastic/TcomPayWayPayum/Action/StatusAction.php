@@ -3,7 +3,9 @@
 namespace Locastic\TcomPayWayPayum\Action;
 
 use Payum\Core\Action\ActionInterface;
-use Payum\Core\Request\StatusRequestInterface;
+use Payum\Core\Request\GetStatusInterface;
+use Payum\Core\Exception\RequestNotSupportedException;
+
 
 class StatusAction implements ActionInterface
 {
@@ -12,6 +14,11 @@ class StatusAction implements ActionInterface
      */
     public function execute($request)
     {
+        /** @var $request GetStatusInterface */
+        if (false == $this->supports($request)) {
+            throw RequestNotSupportedException::createActionNotSupported($this, $request);
+        }
+
         $model = $request->getModel();
 
         if (false == isset($model['paymentStatus'])) {
@@ -47,7 +54,7 @@ class StatusAction implements ActionInterface
     public function supports($request)
     {
         return
-            $request instanceof StatusRequestInterface &&
+            $request instanceof GetStatusInterface &&
             $request->getModel() instanceof \ArrayAccess;
     }
 }

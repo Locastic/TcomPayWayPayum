@@ -15,22 +15,32 @@ class TcomPayWayPaymentFactory extends AbstractPaymentFactory
      * @param $contextName
      * @param array $config
      */
-    protected function addActions(Definition $paymentDefinition, ContainerBuilder $container, $contextName, array $config)
-    {
+    protected function addActions(
+        Definition $paymentDefinition,
+        ContainerBuilder $container,
+        $contextName,
+        array $config
+    ) {
         $captureAction = new Definition;
         $captureAction->setClass('Locastic\TcomPayWayPayum\Action\CaptureAction');
         $captureAction->setPublic(false);
-        $captureAction->addTag('payum.action', array(
-            'factory' => 'tcompayway'
-        ));
+        $captureAction->addTag(
+            'payum.action',
+            array(
+                'factory' => 'tcompayway'
+            )
+        );
         $container->setDefinition('locastic.tcompayway_payum.action.capture', $captureAction);
 
         $statusAction = new Definition;
         $statusAction->setClass('Locastic\TcomPayWayPayum\Action\StatusAction');
         $statusAction->setPublic(false);
-        $statusAction->addTag('payum.action', array(
-            'factory' => 'tcompayway'
-        ));
+        $statusAction->addTag(
+            'payum.action',
+            array(
+                'factory' => 'tcompayway'
+            )
+        );
         $container->setDefinition('locastic.tcompayway_payum.action.status', $statusAction);
     }
 
@@ -62,16 +72,16 @@ class TcomPayWayPaymentFactory extends AbstractPaymentFactory
 
         $builder
             ->children()
-                ->scalarNode('shop_id')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('shop_username')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('shop_password')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('shop_secret_key')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('api_wsdl')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('api_options_location')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('api_options_trace')->isRequired()->cannotBeEmpty()->end()
-                ->scalarNode('api_options_url')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('shop_id')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('shop_username')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('shop_password')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('shop_secret_key')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('api_wsdl')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('api_options_location')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('api_options_trace')->isRequired()->cannotBeEmpty()->end()
+            ->scalarNode('api_options_url')->isRequired()->cannotBeEmpty()->end()
             ->end()
-        ->end();
+            ->end();
     }
 
     /**
