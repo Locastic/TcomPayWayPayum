@@ -103,8 +103,10 @@ class CaptureAction extends PaymentAwareAction implements ApiAwareInterface
 
             $this->payment->execute($secure3dTmpl);
             throw new HttpResponse($secure3dTmpl->getResult());
-        }
-        else {
+        } // TODO test this, breaks when user enters invalid card expiration date
+        elseif($response['status'] == 'error') {
+            $model['tcomData'] = $response['message'];
+        } else {
             $model['tcomData'] = $response['authResponse'];
         }
     }
