@@ -13,7 +13,7 @@ use Locastic\TcomPayWay\Model\Transaction;
 use Payum\Core\Action\PaymentAwareAction;
 use Payum\Core\ApiAwareInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
-use Payum\Core\Request\SecuredCapture;
+use Payum\Core\Request\Capture;
 use Payum\Core\Exception\UnsupportedApiException;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Request\RenderTemplate;
@@ -117,7 +117,7 @@ class CaptureAction extends PaymentAwareAction implements ApiAwareInterface
     public function supports($request)
     {
         return
-            $request instanceof SecuredCapture &&
+            $request instanceof Capture &&
             $request->getModel() instanceof \ArrayAccess;
     }
 }
