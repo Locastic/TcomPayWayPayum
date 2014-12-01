@@ -28,7 +28,7 @@ class StatusAction implements ActionInterface
         }
 
         if ('success' == $model['paymentStatus'] or 'finished' == $model['paymentStatus']) {
-            $request->markSuccess();
+            $request->markCaptured();
 
             return;
         }
