@@ -1,6 +1,4 @@
 TcomPayWayPayum
 ===============
 
-TcomPayway integration with Payum
-
-BETA version; still in development & testing phase
+This repo is deprecated please see https://github.com/locastic/TcomPayWayPayumBundle 
